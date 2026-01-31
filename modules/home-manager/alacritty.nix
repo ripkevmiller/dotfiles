@@ -1,0 +1,18 @@
+{ config, pkgs, ... }:
+
+{
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font = {
+        normal = {
+          family = "FiraCode Nerd Font";
+          style = "Regular";
+        };
+        size = 14.0;
+      };
+    };
+  }; 
+
+}
