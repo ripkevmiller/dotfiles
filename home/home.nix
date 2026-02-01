@@ -26,11 +26,16 @@
   home.packages = with pkgs; [
 
     nerd-fonts.fira-code
+    nerd-fonts.symbols-only
 
     btop
     discord
     fastfetch
+    firefox
+    gcc
     git
+    spotify
+    waybar
 
   ];
 

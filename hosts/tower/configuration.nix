@@ -16,6 +16,13 @@
     "/share/xdg-desktop-portal"
   ];
 
+  environment.shellInit = ''
+    # Only trigger on the first virtual TTY to avoid multiple launches.
+    if [ "$XDG_SESSION_TYPE" != "wayland" ] && [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
+      exec start-hyprland
+    fi
+  '';
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;

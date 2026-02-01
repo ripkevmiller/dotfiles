@@ -30,7 +30,6 @@
       ];
 
       exec-once = [
-        "alacritty"
         "hyprpaper"
       ];
 
@@ -45,7 +44,7 @@
       };
       
       decoration = {
-        rounding = 10;
+        rounding = 5;
         blur = {
           enabled = true;
           size = 3;
@@ -55,6 +54,14 @@
 
     };
 
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
   };
 
   services.hyprpaper = {
@@ -69,5 +76,63 @@
       ];
     };
   };
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+    style = builtins.readFile ./configs/waybar/style.css;
+    settings = [{
+      mainBar = {
+        layer = "top";
+        position = "top";
+        height = 32;
+
+        modules-left = [
+          "hyprland/workspaces" 
+        ];
+
+        modules-center = [
+          "clock"
+        ];
+
+        modules-right = [
+          "network"
+          "pulseaudio"
+        ];
+
+        "hyprland/workspaces" = { 
+          format = "{name}";
+          on-click = "activate"; 
+        };
+
+        "hyprland/window" = {
+          max-length = 50;
+        };
+
+        clock = {
+          format = "{:%a. %I:%M %p}";
+        };
+
+        pulseaudio = {
+          format = "{volume}% {icon}";
+          format-muted = "";
+          format-icons = {
+            default = [ "" "" "" ];
+          };
+          on-click = "pavucontrol";
+        };
+
+        network = {
+          format = "{icon}";
+          format-icons = {
+            default = [ "󰤟" "󰤢" "󰤥" "󰤨" ];
+          };
+          format-ethernet = "󰈀";
+          format-disconnected = "󰤫";
+        };
+      };
+    }];
+
+  }; 
 
 }
