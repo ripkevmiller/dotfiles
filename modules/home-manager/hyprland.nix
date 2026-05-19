@@ -68,10 +68,11 @@
     enable = true;
     settings = {
       splash = "false";
+      unload = "/home/drew/pictures/wallpapers/pissarro.jpg";
       wallpaper = [
         {
           monitor = "DP-5";
-          path = "/home/drew/pictures/wallpapers/pissarro.jpg";
+          path = "/home/drew/pictures/wallpapers/autumn.jpg";
         }
       ];
     };
